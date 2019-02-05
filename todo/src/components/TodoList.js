@@ -17,10 +17,19 @@ class TodoList extends React.Component {
 
     addTodo = e => {
         e.preventDefault()
-        this.props.addNewTodo(this.state.newTodos)
+        this.props.addNewTodo(this.state.newTodos);
+        this.setState({
+            newTodos: ''
+        })
+    }
+
+    toggleCompleted = (e, index) => {
+        e.preventDefault()
+        this.props.toggleCompletedTask(index)
     }
 
     render() {
+        console.log(this.state)
         return (
             <div>
                 <h1>Todo</h1>
@@ -36,7 +45,13 @@ class TodoList extends React.Component {
                 <div>
                     {this.props.todos.map((todo, index) => {
                         return (
-                            <div key={index}>{todo.value}</div>
+                            <div
+                                key={index}
+                                id={index}
+                                onClick={this.toggleCompleted}
+                            >
+                                {todo.value}
+                            </div>
                         )
 
                     })}
