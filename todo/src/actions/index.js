@@ -8,9 +8,9 @@ export function addNewTodo(newTodos) {
     }
 }
 
-export function toggleCompletedTask(index) {
+export function toggleCompletedTask(id) {
     return {
         type: TOGGLE_COMPLETED,
-        payload: index
+        payload: id
     }
 }
